@@ -64,7 +64,7 @@ def pytorch_to_keras(
     logger.debug(output_names)
 
     stream = io.BytesIO()
-    torch.onnx.export(model, args, stream, do_constant_folding=do_constant_folding, verbose=verbose, input_names=input_names, output_names=output_names)
+    torch.onnx.export(model, args, stream, do_constant_folding=do_constant_folding, verbose=verbose, input_names=input_names, output_names=output_names, opset_version=11)
 
     stream.seek(0)
     onnx_model = onnx.load(stream)
